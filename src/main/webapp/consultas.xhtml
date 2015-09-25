@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Comercios de Miraflores2</title>
+	<title>Comercios de Miraflores</title>
 	<!--<link rel="stylesheet" type="text/css" href="estilos.css"></link>-->
 </h:head>
 <body>
@@ -25,44 +25,61 @@
 	</h:form>
 
 	<h:form>
-		
+
 		<p:contextMenu for="dtComercio">
 			<p:menuitem value="Ver mapa" update="mapaComercio"
-				icon="ui-icon-search" oncomplete="PF('cc').filter(); PF('comercioDialog').show()" />
+				icon="ui-icon-search" oncomplete="PF('comercioDialog').show()" />
 		</p:contextMenu>
 
 		<p:panel id="panel" header="Busqueda de Comercios"
 			style="margin-top:10px">
 			<p:messages autoUpdate="true" />
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+				<p:outputLabel for="seleccion" value="Seleccione tipo de busqueda:" />
+				<p:selectOneMenu id="seleccion" value="#{buscarBean.seleccion}"
+					style="width:200px">
+					<f:selectItem itemLabel="Por rubro" itemValue="rubro" />
+					<f:selectItem itemLabel="Por codigo" itemValue="codigo" />
+				</p:selectOneMenu>
+				<p:outputLabel for="entrada" value="Ingrese valor a buscar:" />
+				<p:inputText id="entrada" value="#{buscarBean.entrada}"
+					style="width:190px;" />
+				<h:commandButton action="#{buscarBean.filtrar}"
+					value="Iniciar Busqueda" />
+				<h:commandButton action="#{buscarBean.mostrartodo}"
+					value="Mostrar Todos los Registros" />
+			</h:panelGrid>
 		</p:panel>
 
-		<p:dataTable id="dtComercio" widgetVar="cc" var="comercio"
-			value="#{buscarBean.getUsers()}" rowKey="#{comercio.id}"
-			selection="#{buscarBean.selectedComerce}" selectionMode="single" 
-			scrollable="true" scrollHeight="700">
+		<p:panel>
+			<p:dataTable id="dtComercio" var="cole" value="#{buscarBean.coles}"
+				rowKey="#{cole.id}" selection="#{buscarBean.selectedComerce}"
+				selectionMode="single" paginator="true" rows="10"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15">
 
-			<p:column headerText="Codigo" filterBy="#{comercio.id}"
-				filterMatchMode="exact">
-				<h:outputText value="#{comercio.id}" />
-			</p:column>
-			<p:column headerText="Nombre">
-				<h:outputText value="#{comercio.nombre}" />
-			</p:column>
-			<p:column headerText=" Via">
-				<h:outputText value="#{comercio.via}" />
-			</p:column>
-			<p:column headerText="Número">
-				<h:outputText value="#{comercio.numero}" />
-			</p:column>
-			<p:column headerText="Giro" filterBy="#{comercio.giro}"
-				filterMatchMode="contains">
-				<h:outputText value="#{comercio.giro}" />
-			</p:column>
+				<p:column headerText="Id">
+					<h:outputText value="#{cole.id}" />
+				</p:column>
+				<p:column headerText="Nombre">
+					<h:outputText value="#{cole.nombre}" />
+				</p:column>
+				<p:column headerText=" Via">
+					<h:outputText value="#{cole.via}" />
+				</p:column>
+				<p:column headerText="Número">
+					<h:outputText value="#{cole.numero}" />
+				</p:column>
+				<p:column headerText="Rubro">
+					<h:outputText value="#{cole.giro}" />
+				</p:column>
 
-		</p:dataTable>
+			</p:dataTable>
+		</p:panel>
 
 		<p:dialog header="Localización del negocio" widgetVar="comercioDialog"
-			modal="true" showEffect="fade" hideEffect="fade" resizable="false" draggable="true" closeOnEscape="true" position="center center">
+			modal="true" showEffect="fade" hideEffect="fade" resizable="false"
+			draggable="false" closeOnEscape="true" position="top">
 			<p:outputPanel id="mapaComercio" style="text-align:center;">
 				<p:panelGrid columns="2" rendered="true" columnClasses="label,value">
 
@@ -82,13 +99,13 @@
 				</p:panelGrid>
 			</p:outputPanel>
 		</p:dialog>
-		
+
 	</h:form>
 
-	<p:layout style="min-width:600px;min-height:30px;margin-top:262px">
-	    <p:layoutUnit position="center" >
-	        <h4 align="center">Sistemas Distribuidos 2015-II</h4>
-	    </p:layoutUnit>
+	<p:layout style="margin-top:200px;min-width:600px;min-height:30px;">
+		<p:layoutUnit position="center">
+			<h4 align="center">Sistemas Distribuidos 2015-II</h4>
+		</p:layoutUnit>
 	</p:layout>
 
 </body>
