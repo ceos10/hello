@@ -34,7 +34,7 @@
 		<p:panel id="panel" header="Busqueda de Comercios"
 			style="margin-top:10px; margin-bottom:10px">
 			<p:messages autoUpdate="true" />
-			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<h:panelGrid columns="2" style="margin-bottom:10px; margin: 0 auto" cellpadding="5">
 				<p:outputLabel for="seleccion" value="Seleccione tipo de busqueda:" />
 				<p:selectOneMenu id="seleccion" value="#{buscarBean.seleccion}"
 					style="width:200px">
@@ -44,10 +44,11 @@
 				<p:outputLabel for="entrada" value="Ingrese valor a buscar:" />
 				<p:inputText id="entrada" value="#{buscarBean.entrada}"
 					style="width:190px;" />
-				<h:commandButton action="#{buscarBean.filtrar}"
-					value="Iniciar Busqueda" />
+				
 				<h:commandButton action="#{buscarBean.mostrartodo}"
 					value="Mostrar Todos los Registros" />
+			    <h:commandButton action="#{buscarBean.filtrar}"
+					value="Iniciar Busqueda" />
 			</h:panelGrid>
 		</p:panel>
 
