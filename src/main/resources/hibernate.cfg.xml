@@ -5,9 +5,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">ZZae4_sGSMGp</property>
-        <property name="hibernate.connection.url">jdbc:mysql://127.11.216.130:3306/comerciosmiraflores</property>
-        <property name="hibernate.connection.username">admineUNZz3t</property>
+        <property name="hibernate.connection.password">KuNUvHXNPnZg</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.11.181.2:3306/comerciosmiraflores</property>
+        <property name="hibernate.connection.username">adminha4pt3Q</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <mapping class="com.project.entities.comercio"/>
     </session-factory>
