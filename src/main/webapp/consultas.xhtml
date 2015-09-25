@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Comercios de Miraflores2</title>
+	<!--<link rel="stylesheet" type="text/css" href="estilos.css"></link>-->
+</h:head>
+<body>
+
+	<h:form>
+
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Inicio" url="inicio.jsf" icon="ui-icon-home" />
+			<p:menuitem value="Consultas" url="consultas.jsf"
+				icon="ui-icon-search" />
+			<p:menuitem value="Servicios" url="servicios.jsf"
+				icon="ui-icon-person" />
+		</p:menubar>
+	</h:form>
+
+	<h:form>
+		
+		<p:contextMenu for="dtComercio">
+			<p:menuitem value="Ver mapa" update="mapaComercio"
+				icon="ui-icon-search" oncomplete="PF('cc').filter(); PF('comercioDialog').show()" />
+		</p:contextMenu>
+
+		<p:panel id="panel" header="Busqueda de Comercios"
+			style="margin-top:10px">
+			<p:messages autoUpdate="true" />
+		</p:panel>
+
+		<p:dataTable id="dtComercio" widgetVar="cc" var="comercio"
+			value="#{buscarBean.getUsers()}" rowKey="#{comercio.id}"
+			selection="#{buscarBean.selectedComerce}" selectionMode="single" 
+			scrollable="true" scrollHeight="700">
+
+			<p:column headerText="Codigo" filterBy="#{comercio.id}"
+				filterMatchMode="exact">
+				<h:outputText value="#{comercio.id}" />
+			</p:column>
+			<p:column headerText="Nombre">
+				<h:outputText value="#{comercio.nombre}" />
+			</p:column>
+			<p:column headerText=" Via">
+				<h:outputText value="#{comercio.via}" />
+			</p:column>
+			<p:column headerText="Número">
+				<h:outputText value="#{comercio.numero}" />
+			</p:column>
+			<p:column headerText="Giro" filterBy="#{comercio.giro}"
+				filterMatchMode="contains">
+				<h:outputText value="#{comercio.giro}" />
+			</p:column>
+
+		</p:dataTable>
+
+		<p:dialog header="Localización del negocio" widgetVar="comercioDialog"
+			modal="true" showEffect="fade" hideEffect="fade" resizable="false" draggable="true" closeOnEscape="true" position="center center">
+			<p:outputPanel id="mapaComercio" style="text-align:center;">
+				<p:panelGrid columns="2" rendered="true" columnClasses="label,value">
+
+					<f:facet name="header">
+						<p:graphicImage value="#{buscarBean.url_mapa}" />
+					</f:facet>
+
+					<h:outputText value="Nombre" />
+					<h:outputText value="#{buscarBean.selectedComerce.nombre}" />
+
+					<h:outputText value="Geo X" />
+					<h:outputText value="#{buscarBean.selectedComerce.geo_x}" />
+
+					<h:outputText value="Geo Y" />
+					<h:outputText value="#{buscarBean.selectedComerce.geo_y}" />
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+		
+	</h:form>
+
+	<p:layout style="min-width:600px;min-height:30px;margin-top:262px">
+	    <p:layoutUnit position="center" >
+	        <h4 align="center">Sistemas Distribuidos 2015-II</h4>
+	    </p:layoutUnit>
+	</p:layout>
+
+</body>
+</html>

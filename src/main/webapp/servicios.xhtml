@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Comercios de Miraflores</title>
+</h:head>
+<body>
+	
+	<h:form>  
+    
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:menuitem value="Inicio" url="inicio.jsf" icon="ui-icon-home" />
+        <p:menuitem value="Consultas" url="consultas.jsf" icon="ui-icon-search" />
+        <p:menuitem value="Servicios" url="servicios.jsf" icon="ui-icon-person" />
+	</p:menubar>
+</h:form>
+
+<h1></h1>
+
+	<p:layout style="min-width:500px;min-height:300px;">
+    <p:layoutUnit position="west" resizable="true" size="300" minSize="100" maxSize="300">
+        <h3>Profesor</h3>
+        <h4>Jorge Guerra Guerra</h4>
+         <div align="center">
+				<img src="Imagenes/guerra.jpg"  > </img>
+		 </div> 
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+    	<h3>Integrantes</h3>
+					<h4 align="center">Ocrospoma Sarasi, Carlos</h4>
+					<h4 align="center">Castro Bardales, Pablo</h4>
+					<h4 align="center">Ramos Rodriguez, Ronald</h4>
+					<h4 align="center">Chavez Panduro, Aldo</h4>
+    </p:layoutUnit>
+	</p:layout>
+	 
+	<p:layout style="min-width:600px;min-height:100px;margin-top:262px">
+    <p:layoutUnit position="center" >
+        <h4 align="center">Sistemas Distribuidos 2015-II</h4>
+    </p:layoutUnit>
+</p:layout>
+</body>
+</html>
